@@ -1,0 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+# Define the URL of the website
+url = 'https://www.weatherindia.net/'
+# Make a request to the website
+response = requests.get(url)
+# Check if the request was successful
+if response.status_code == 200:
+# Parse the HTML content
+"soup = BeautifulSoup(response.content, 'html.parser')"
+# Find elements containing temperature and humidity data
+"temperature = soup.find('div', class_='temp').text"
+"humidity = soup.find('div', class_='hum').text"
+# Print the data
+print(f'Temperature: {temperature}')
+print(f'Humidity: {humidity}')
+else:
+print(f'Error: Unable to retrieve data. Status code
+{response.status_code}')
